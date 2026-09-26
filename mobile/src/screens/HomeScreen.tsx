@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState, useRef } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   RefreshControl,
@@ -14,7 +14,6 @@ import { useRouter } from "expo-router";
 import { useTheme } from "../theme/ThemeProvider";
 import { useI18n } from "../i18n/I18nProvider";
 import { useOfflineData } from "../hooks/useOfflineData";
-import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import {
   PortfolioSummary,
   ProjectBountyItem,
@@ -178,26 +177,6 @@ export function HomeScreen() {
     [router],
   );
 
-
-  // Infinite scroll for bounty items
-  const bountyRef = useRef(null);
-  const {
-    data: bountyItems,
-    isLoading: bountyLoading,
-    isFetching: bountyFetching,
-    loadMore: loadMoreBounties,
-  } = useInfiniteScroll({
-    pageSize: 10,
-    maxItems: 200, // Memory optimization
-    initialData: data?.projectBountyItems ?? [],
-    onLoadMore: async (page: number, pageSize: number) => {
-      // Simulate pagination - in real app, call API
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      const allItems = data?.projectBountyItems ?? [];
-      const startIdx = (page - 1) * pageSize;
-      return allItems.slice(startIdx, startIdx + pageSize);
-    },
-  });
 
   const handleRefresh = useCallback(async () => {
     void trigger("light");
