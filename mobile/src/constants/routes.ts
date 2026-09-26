@@ -17,6 +17,8 @@ export const ROUTES = {
   AUTH: {
     /** Login screen. */
     LOGIN: '/(auth)/login',
+    /** Introductory registration flow. */
+    REGISTER: '/(auth)/register',
     /** First-run onboarding walkthrough. */
     ONBOARDING: '/(auth)/onboarding',
   },
@@ -42,7 +44,7 @@ type RouteValues<T> = T[keyof T];
 
 /**
  * Union of every concrete route string declared in {@link ROUTES}
- * (e.g. `'/(auth)/login' | '/(auth)/onboarding' | '/(app)/home'`).
+ * (e.g. `'/(auth)/login' | '/(auth)/register' | '/(app)/home'`).
  */
 export type AppRoute = RouteValues<{
   [G in RouteGroup]: RouteValues<(typeof ROUTES)[G]>;
