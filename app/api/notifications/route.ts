@@ -45,47 +45,43 @@ export async function GET(request: Request) {
   const offset = parseInt(searchParams.get('offset') ?? '0', 10);
   const filter = searchParams.get('filter') ?? 'all';
 
-  // Build the where clause based on filter
-  const where: { userId: string; read?: boolean } = {
-    userId: session.user.id,
-  };
-
-  if (filter === 'unread') {
-    where.read = false;
-  } else if (filter === 'read') {
-    where.read = true;
-  }
-
-  // Query notifications and total count in parallel
-  const [notifications, total, unreadCount] = await Promise.all([
+  const [notifications, total] = await Promise.all([
     prisma.inAppNotification.findMany({
-      where,
+      where: { userId: session.user.id },
       orderBy: { createdAt: 'desc' },
       take: limit,
       skip: offset,
-      select: {
-        id: true,
-        title: true,
-        body: true,
-        read: true,
-        applicationId: true,
-        bountyId: true,
-        createdAt: true,
-      },
     }),
-    prisma.inAppNotification.count({ where }),
     prisma.inAppNotification.count({
-      where: { userId: session.user.id, read: false },
+      where: { userId: session.user.id },
     }),
   ]);
 
-  const response: NotificationsResponse = {
-    notifications: notifications.map((n) => ({
-      ...n,
-      createdAt: n.createdAt.toISOString(),
-    })),
+  // Map to the format expected by the mobile activity feed
+  const items = notifications.map((n) => ({
+    id: n.id,
+    type: n.bountyId ? 'bounty_created' : n.applicationId ? 'bounty_applied' : 'message_received',
+    title: n.title,
+    body: n.body,
+    read: n.read,
+    bountyId: n.bountyId ?? undefined,
+    applicationId: n.applicationId ?? undefined,
+    createdAt: n.createdAt.toISOString(),
+  }));
+
+  return NextResponse.json({
+    success: true,
+    data: {
+      items,
+      pagination: {
+        page: Math.floor(offset / limit) + 1,
+        limit,
+        total,
+        hasMore: offset + limit < total,
+      },
+    },
+    notifications: items,
     total,
-    unreadCount,
     limit,
     offset,
     hasMore: offset + notifications.length < total,
