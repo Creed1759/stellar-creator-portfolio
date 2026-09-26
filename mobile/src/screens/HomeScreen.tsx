@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState, useRef } from "react";
 import {
   ActivityIndicator,
-  FlatList,
   RefreshControl,
   SafeAreaView,
   ScrollView,
@@ -220,8 +219,14 @@ export function HomeScreen() {
     // Placeholder for project / bounty detail navigation.
   }, []);
 
+  const trendingPortfolios = useMemo(
+    () =>
+      [...(data?.trendingPortfolios ?? [])].sort((a, b) => b.change - a.change),
+    [data],
+  );
+
   const trendingSection = useMemo(() => {
-    if (!data) return null;
+    if (trendingPortfolios.length === 0) return null;
 
     return (
       <View style={styles.section}>
@@ -235,23 +240,22 @@ export function HomeScreen() {
             {t("home.trendingCaption")}
           </Text>
         </View>
-        <FlatList
-          data={data.trendingPortfolios}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <PortfolioCard
-              portfolio={item}
-              onPress={() => onPortfolioPress(item)}
-            />
-          )}
+        <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.horizontalList}
-          ListFooterComponent={<View style={{ width: Spacing.base }} />}
-        />
+        >
+          {trendingPortfolios.map((item) => (
+            <PortfolioCard
+              key={item.id}
+              portfolio={item}
+              onPress={() => onPortfolioPress(item)}
+            />
+          ))}
+        </ScrollView>
       </View>
     );
-  }, [data, colors.text, colors.textSecondary, onPortfolioPress]);
+  }, [trendingPortfolios, colors.text, colors.textSecondary, onPortfolioPress, t]);
 
   const metricsSection = useMemo(() => {
     if (!data) return null;
