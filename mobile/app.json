@@ -136,6 +136,18 @@
             "presentation": "card",
             "animation": "slide_from_right",
             "gestureEnabled": true
+          },
+          "proposal": {
+            "title": "Proposal",
+            "presentation": "modal",
+            "animation": "slide_from_bottom",
+            "gestureEnabled": true
+          },
+          "application": {
+            "title": "Application",
+            "presentation": "modal",
+            "animation": "slide_from_bottom",
+            "gestureEnabled": true
           }
         }
       }
