@@ -148,6 +148,12 @@
             "presentation": "modal",
             "animation": "slide_from_bottom",
             "gestureEnabled": true
+          },
+          "creator": {
+            "title": "Creator",
+            "presentation": "card",
+            "animation": "slide_from_right",
+            "gestureEnabled": true
           }
         }
       }
