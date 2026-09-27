@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import { Download, DollarSign, TrendingUp, Clock, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { PaginationControls } from '@/components/ui/pagination-controls'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -12,11 +13,12 @@ import {
   computeSummary,
   type EarningTransaction,
 } from '@/lib/earnings-data'
+import { formatCurrency, formatDate } from '@/lib/utils'
 
 const PAGE_SIZE = 5
 
 function fmt(usd: number) {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(usd)
+  return formatCurrency(usd, 'USD', 2)
 }
 
 // ── CSV export ────────────────────────────────────────────────────────────────
@@ -97,6 +99,17 @@ const STATUS_VARIANT: Record<EarningTransaction['status'], 'default' | 'secondar
   failed: 'destructive',
 }
 
+/**
+ * EarningsDashboard Component
+ *
+ * Displays the creator earnings dashboard, providing:
+ * - High-level summary metrics (annual, monthly, and pending escrow earnings)
+ * - Date range filtering for transaction history
+ * - Formatted transaction history table with pagination controls
+ * - Export options for CSV, IRS Form 1099-NEC text summary, and VAT invoices
+ *
+ * @returns The rendered earnings dashboard view.
+ */
 export function EarningsDashboard() {
   const [dateFrom, setDateFrom] = useState('')
   const [dateTo, setDateTo] = useState('')
@@ -228,7 +241,7 @@ export function EarningsDashboard() {
                 ) : paginated.map((tx) => (
                   <tr key={tx.id} className="border-b border-border last:border-0 hover:bg-muted/20 transition-colors">
                     <td className="px-4 py-3 whitespace-nowrap text-muted-foreground">
-                      {new Date(tx.date).toLocaleDateString()}
+                      {formatDate(tx.date, 'default')}
                     </td>
                     <td className="px-4 py-3 max-w-[200px] truncate" title={tx.bountyTitle}>
                       {tx.bountyTitle}
@@ -253,19 +266,13 @@ export function EarningsDashboard() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">
-                {filtered.length} transactions · Page {page} of {totalPages}
-              </span>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" disabled={page === 1} onClick={() => setPage((p) => p - 1)}>
-                  Previous
-                </Button>
-                <Button variant="outline" size="sm" disabled={page === totalPages} onClick={() => setPage((p) => p + 1)}>
-                  Next
-                </Button>
-              </div>
-            </div>
+            <PaginationControls
+              page={page}
+              totalPages={totalPages}
+              onPageChange={setPage}
+              label={`${filtered.length} transactions · Page ${page} of ${totalPages}`}
+              className="text-sm"
+            />
           )}
         </CardContent>
       </Card>

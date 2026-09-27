@@ -1,6 +1,7 @@
 'use client';
 
 import { Linkedin, Twitter } from 'lucide-react';
+import { getAvatarInitials } from '@/lib/utils';
 
 interface TeamMember {
   id: string;
@@ -56,6 +57,16 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
+/**
+ * TeamSection — "Meet the Team" block on the About page.
+ *
+ * Renders a responsive grid (1 → 2 → 4 columns) of cards built from the
+ * static `teamMembers` list above. Each card shows initials as an avatar
+ * placeholder, the member's name, role and bio, and optional LinkedIn /
+ * Twitter links that open in a new tab.
+ *
+ * Takes no props; edit `teamMembers` to change who is shown.
+ */
 export function TeamSection() {
   return (
     <section className="py-16 sm:py-24 bg-muted/30 border-b border-border">
@@ -80,7 +91,7 @@ export function TeamSection() {
               {/* Avatar Placeholder */}
               <div className="w-full aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mb-4 flex items-center justify-center">
                 <div className="text-3xl font-bold text-primary/50">
-                  {member.name.split(' ')[0][0]}{member.name.split(' ')[1][0]}
+                  {getAvatarInitials(member.name)}
                 </div>
               </div>
 
