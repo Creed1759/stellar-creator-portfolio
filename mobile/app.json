@@ -35,7 +35,10 @@
           "snapchat",
           "reddit",
           "mailto",
-          "sms"
+          "sms",
+          "lobstr",
+          "solar",
+          "wc"
         ]
       }
     },
