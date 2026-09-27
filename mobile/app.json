@@ -127,7 +127,18 @@
       ]
     ],
     "extra": {
-      "eas": { "projectId": "tamgora" }
+      "eas": { "projectId": "tamgora" },
+      "router": {
+        "origin": false,
+        "screens": {
+          "details": {
+            "title": "Details",
+            "presentation": "card",
+            "animation": "slide_from_right",
+            "gestureEnabled": true
+          }
+        }
+      }
     }
   }
 }
