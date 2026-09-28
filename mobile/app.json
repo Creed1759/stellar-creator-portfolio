@@ -65,6 +65,11 @@
               "scheme": "https",
               "host": "tamgora.app",
               "pathPrefix": "/"
+            },
+            {
+              "scheme": "https",
+              "host": "www.tamgora.app",
+              "pathPrefix": "/"
             }
           ],
           "category": ["BROWSABLE", "DEFAULT"]
