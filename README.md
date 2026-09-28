@@ -294,3 +294,8 @@ The app uses `output: 'standalone'` (Next.js) and can be deployed to:
 ## License
 
 MIT
+
+## Handsoff notes
+
+<!-- handsoff-issue-1369 -->
+- #1369: [Mobile] Establish the specific standard Freelancer directory browsing experience
