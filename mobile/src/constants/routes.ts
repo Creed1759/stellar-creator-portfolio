@@ -34,6 +34,8 @@ export const ROUTES = {
     P2P: '/(app)/p2p',
     /** Biometric authentication screen. */
     BIOMETRIC: '/(app)/biometric-auth',
+    /** Comprehensive preferences screen. */
+    PREFERENCES: '/(app)/preferences',
   },
 } as const;
 
