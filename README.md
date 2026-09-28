@@ -294,3 +294,8 @@ The app uses `output: 'standalone'` (Next.js) and can be deployed to:
 ## License
 
 MIT
+
+## Handsoff notes
+
+<!-- handsoff-issue-1356 -->
+- #1356: [Mobile] Draft standard Mobile Form Inputs and Accessibility implementations
