@@ -302,3 +302,6 @@ MIT
 
 <!-- handsoff-issue-1357 -->
 - #1357: [Mobile] Develop independent Native Profile Avatar and Status Badges
+
+<!-- handsoff-issue-1363 -->
+- #1363: [Mobile] Integrate standard Pull-To-Refresh configurations on network collections
