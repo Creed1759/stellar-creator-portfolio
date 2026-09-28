@@ -294,3 +294,8 @@ The app uses `output: 'standalone'` (Next.js) and can be deployed to:
 ## License
 
 MIT
+
+## Handsoff notes
+
+<!-- handsoff-issue-1364 -->
+- #1364: [Mobile] Implement specialized Infinite Scrolling structures preserving memory gracefully
