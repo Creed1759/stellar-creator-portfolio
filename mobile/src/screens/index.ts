@@ -10,3 +10,4 @@ export { ProposalModal } from "../components/ProposalModal";
 export { RegisterScreen } from "./RegisterScreen";
 export { ShareScreen } from "./ShareScreen";
 export type { ShareScreenProps } from "./ShareScreen";
+export { PreferencesScreen } from "./PreferencesScreen";

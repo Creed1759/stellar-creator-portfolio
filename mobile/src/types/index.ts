@@ -1,3 +1,65 @@
+// ─── Theme Types ──────────────────────────────────────────────────────────────
+
+export type ThemeMode = 'light' | 'dark' | 'system';
+
+// ─── Preference Types ─────────────────────────────────────────────────────────
+
+export type NotificationLevel = 'none' | 'critical' | 'important' | 'all';
+
+export type DataUsageMode = 'standard' | 'low' | 'economy';
+
+export interface UserPreferences {
+  // Appearance
+  themeMode: ThemeMode;
+  
+  // Notifications
+  notificationEnabled: boolean;
+  notificationLevel: NotificationLevel;
+  vibrationEnabled: boolean;
+  soundEnabled: boolean;
+  
+  // Data & Storage
+  dataUsageMode: DataUsageMode;
+  autoDownloadMedia: boolean;
+  cacheClearOnExit: boolean;
+  
+  // Privacy
+  profileVisibleToPublic: boolean;
+  showLastSeen: boolean;
+  allowScreenRecording: boolean;
+  
+  // Accessibility
+  largerTextEnabled: boolean;
+  highContrastEnabled: boolean;
+  
+  // Features
+  biometricAuthEnabled: boolean;
+  darkModeAutoSwitch: boolean;
+}
+
+// ─── Preference Category Types ────────────────────────────────────────────────
+
+export type PreferenceCategory = 
+  | 'appearance'
+  | 'notifications'
+  | 'privacy'
+  | 'data'
+  | 'accessibility'
+  | 'account'
+  | 'about';
+
+export interface PreferenceOption<T = string | boolean | number> {
+  key: string;
+  label: string;
+  description?: string;
+  value: T;
+  type: 'switch' | 'picker' | 'slider' | 'action';
+  options?: Array<{ value: T; label: string; description?: string }>;
+  min?: number;
+  max?: number;
+  step?: number;
+}
+
 // ─── Navigation Types ──────────────────────────────────────────────────────────
 
 export type RootStackParamList = {
@@ -17,6 +79,7 @@ export type RootStackParamList = {
   StreamHost: { roomId: string; signalingServerUrl?: string };
   StreamViewer: { roomId: string; creatorName?: string; signalingServerUrl?: string };
   NotificationSettings: undefined;
+  Preferences: undefined;
   BountyDetail: { bountyId: string };
   EmailVerification: { token?: string };
   PaymentComplete: { paymentId?: string; status?: string };
@@ -28,6 +91,16 @@ export type MainTabParamList = {
   Dashboard: undefined;
   Profile: undefined;
   Settings: undefined;
+};
+
+// ─── Settings Stack Param List ────────────────────────────────────────────────
+
+export type SettingsStackParamList = {
+  Settings: undefined;
+  LanguageSettings: undefined;
+  ThemeSettings: undefined;
+  NotificationSettings: undefined;
+  Preferences: undefined;
 };
 
 // ─── Home Screen ──────────────────────────────────────────────────────────────

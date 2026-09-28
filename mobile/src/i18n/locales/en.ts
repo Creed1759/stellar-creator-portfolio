@@ -209,6 +209,81 @@ const en = {
     version: 'Version {{version}}',
     languageChanged: 'Language updated to {{language}}',
     rtlNote: 'Right-to-left layout enabled',
+    
+    // Preferences
+    preferencesTitle: 'Preferences',
+    preferencesSubtitle: 'Customize your experience',
+    
+    // Appearance
+    appearanceSection: 'Appearance',
+    darkMode: 'Dark Mode',
+    darkModeDescription: 'Always use dark theme',
+    systemTheme: 'System Theme',
+    systemThemeDescription: 'Match device settings',
+    largerText: 'Larger Text',
+    largerTextDescription: 'Increase font size for better readability',
+    highContrast: 'High Contrast',
+    highContrastDescription: 'Enhance color contrast for visibility',
+    
+    // Notifications
+    notificationsSection: 'Notifications',
+    pushNotifications: 'Push Notifications',
+    pushNotificationsDescription: 'Receive push alerts for messages and updates',
+    notificationLevel: 'Notification Level',
+    notificationLevelDescription: 'Control which notifications you receive',
+    vibration: 'Vibration',
+    vibrationDescription: 'Enable haptic feedback for notifications',
+    sound: 'Sound',
+    soundDescription: 'Play sounds for incoming notifications',
+    
+    // Privacy
+    privacySection: 'Privacy',
+    profileVisibility: 'Profile Visibility',
+    profileVisibilityDescription: 'Show your profile to non-contacts',
+    lastSeen: 'Last Seen',
+    lastSeenDescription: 'Show when you were last active',
+    screenRecording: 'Screen Recording Protection',
+    screenRecordingDescription: 'Block screenshots and screen recording',
+    
+    // Data & Storage
+    dataSection: 'Data & Storage',
+    dataUsage: 'Data Usage Mode',
+    dataUsageDescription: 'Control data consumption',
+    autoDownload: 'Auto-download Media',
+    autoDownloadDescription: 'Automatically download images and videos',
+    clearCache: 'Clear Cache on Exit',
+    clearCacheDescription: 'Remove cached data when closing the app',
+    
+    // Features
+    featuresSection: 'Features',
+    biometricAuth: 'Biometric Authentication',
+    biometricAuthDescription: 'Use Face ID or Touch ID for secure access',
+    autoDarkSwitch: 'Auto Dark Mode',
+    autoDarkSwitchDescription: 'Automatically switch based on time of day',
+    
+    // Data usage options
+    dataStandard: 'Standard',
+    dataStandardDescription: 'Normal data usage (default)',
+    dataLow: 'Low',
+    dataLowDescription: 'Reduce data consumption',
+    dataEconomy: 'Economy',
+    dataEconomyDescription: 'Minimal data usage',
+    
+    // Notification levels
+    levelNone: 'None',
+    levelNoneDescription: 'Disable all notifications',
+    levelCritical: 'Critical Only',
+    levelCriticalDescription: 'Only critical alerts',
+    levelImportant: 'Important',
+    levelImportantDescription: 'Important and critical alerts',
+    levelAll: 'All',
+    levelAllDescription: 'All notifications',
+    
+    // Buttons
+    resetPreferences: 'Reset Preferences',
+    resetPreferencesConfirm: 'Reset all preferences to default?',
+    resetComplete: 'Preferences reset successfully',
+    resetError: 'Failed to reset preferences',
   },
   home: {
     greeting: 'Hello, Tamgora Creator',
