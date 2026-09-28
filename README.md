@@ -299,3 +299,6 @@ MIT
 
 <!-- handsoff-issue-1356 -->
 - #1356: [Mobile] Draft standard Mobile Form Inputs and Accessibility implementations
+
+<!-- handsoff-issue-1357 -->
+- #1357: [Mobile] Develop independent Native Profile Avatar and Status Badges
