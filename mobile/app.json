@@ -135,7 +135,36 @@
       ]
     ],
     "extra": {
-      "eas": { "projectId": "tamgora" }
+      "eas": { "projectId": "tamgora" },
+      "router": {
+        "origin": false,
+        "screens": {
+          "details": {
+            "title": "Details",
+            "presentation": "card",
+            "animation": "slide_from_right",
+            "gestureEnabled": true
+          },
+          "proposal": {
+            "title": "Proposal",
+            "presentation": "modal",
+            "animation": "slide_from_bottom",
+            "gestureEnabled": true
+          },
+          "application": {
+            "title": "Application",
+            "presentation": "modal",
+            "animation": "slide_from_bottom",
+            "gestureEnabled": true
+          },
+          "creator": {
+            "title": "Creator",
+            "presentation": "card",
+            "animation": "slide_from_right",
+            "gestureEnabled": true
+          }
+        }
+      }
     }
   }
 }
