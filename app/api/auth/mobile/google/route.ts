@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { OAuth2Client } from 'google-auth-library';
-import { encode } from 'next-auth/jwt';
 import { upsertOAuthUser } from '@/lib/auth/oauth-user';
-import { authOptions } from '@/lib/auth/config';
 
 const client = new OAuth2Client();
 
@@ -14,8 +12,12 @@ const client = new OAuth2Client();
  * server-side (never trust a client-supplied token without verification)
  * and find-or-create the matching User.
  *
- * Issues a NextAuth-compatible JWT that the mobile client can use as a
- * Bearer token on subsequent authenticated API calls.
+ * TODO: this returns the user record but doesn't issue anything mobile can
+ * use as a bearer token on later authenticated API calls — there's no
+ * server-side session for mobile yet. Untested end-to-end: this repo has no
+ * device/simulator to exercise the native Google OAuth screen against, and
+ * needs real GOOGLE_CLIENT_ID values (separate iOS/Android OAuth clients
+ * from Google Cloud Console, not just the web one) before it can work at all.
  */
 export async function POST(req: NextRequest) {
   const clientId = process.env.GOOGLE_CLIENT_ID;
@@ -47,35 +49,12 @@ export async function POST(req: NextRequest) {
     image: payload.picture,
   });
 
-  // Issue a NextAuth-compatible JWT token that the mobile client can use
-  // as a Bearer token on subsequent API calls. The token is encoded using
-  // the same secret and encryption settings as the web session, so
-  // getServerSession(authOptions) will decode it transparently.
-  const token = await encode({
-    token: {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-      role: user.role,
-      emailVerified: user.emailVerified?.toISOString() ?? null,
-      onboardingCompleted: !!user.onboardingCompletedAt,
-    },
-    secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET ?? '',
-    maxAge: 30 * 24 * 60 * 60, // 30 days — matches NextAuth default
-  });
-
   return NextResponse.json({
-    token,
-    user: {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-      role: user.role,
-      walletAddress: user.walletAddress,
-      onboardingCompleted: !!user.onboardingCompletedAt,
-    },
-    // Include token type and expiry for mobile client convenience
-    tokenType: 'Bearer',
-    expiresIn: 30 * 24 * 60 * 60, // seconds
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    walletAddress: user.walletAddress,
+    onboardingCompleted: !!user.onboardingCompletedAt,
   });
 }

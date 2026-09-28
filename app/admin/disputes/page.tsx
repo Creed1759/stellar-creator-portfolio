@@ -4,9 +4,10 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { PaginationControls } from '@/components/ui/pagination-controls';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, Gavel, RefreshCw } from 'lucide-react';
+import { StatusBadge } from '@/components/ui/status-badge';
 
 interface Dispute {
   id: string;
@@ -20,12 +21,6 @@ interface Dispute {
 }
 
 type Resolution = 'release_to_freelancer' | 'refund_to_creator' | 'split_50_50';
-
-const STATUS_COLORS: Record<string, string> = {
-  open: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
-  resolved: 'bg-green-500/10 text-green-600 border-green-500/20',
-  closed: 'bg-gray-500/10 text-gray-500 border-gray-500/20',
-};
 
 const RESOLUTION_LABELS: Record<Resolution, string> = {
   release_to_freelancer: 'Release to Freelancer',
@@ -46,7 +41,7 @@ export default function AdminDisputesPage() {
   const [disputes, setDisputes] = useState<Dispute[]>([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [statusFilter, setStatusFilter] = useState<'open' | 'resolved' | 'all'>('open');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('open');
   const [loading, setLoading] = useState(true);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [note, setNote] = useState('');
@@ -59,13 +54,13 @@ export default function AdminDisputesPage() {
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/admin/disputes?status=${statusFilter}&page=${page}&limit=${LIMIT}`
+        `/api/admin/disputes?status=${statusFilter}&page=${page}&limit=${LIMIT}`,
       );
       if (!res.ok) throw new Error('Failed to load disputes');
       const data = await res.json();
       setDisputes(data.disputes);
       setTotal(data.total);
-    } catch (e) {
+    } catch {
       notify('Failed to load disputes');
     } finally {
       setLoading(false);
@@ -98,8 +93,8 @@ export default function AdminDisputesPage() {
       setNote('');
       setSelectedId(null);
       await load();
-    } catch (e: any) {
-      notify(e.message ?? 'Error resolving dispute');
+    } catch (e: unknown) {
+      notify(e instanceof Error ? e.message : 'Error resolving dispute');
     } finally {
       setResolving(false);
     }
@@ -108,49 +103,57 @@ export default function AdminDisputesPage() {
   const totalPages = Math.ceil(total / LIMIT);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6 p-6">
-      {/* Toast */}
-      {toast && (
-        <div
-          aria-live="polite"
-          className="fixed top-4 right-4 z-50 bg-foreground text-background px-4 py-2 rounded-lg shadow-lg text-sm"
-        >
-          {toast}
-        </div>
-      )}
+    <div className="space-y-6">
+      <Toast message={toast ?? ''} />
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <Button variant="ghost" size="sm" asChild>
-          <Link href="/admin" className="gap-1">
-            <ArrowLeft className="h-4 w-4" /> Admin
-          </Link>
+          <Link href="/admin"><ArrowLeft className="mr-1 h-4 w-4" />Admin</Link>
         </Button>
       </div>
 
-      <div>
-        <h1 className="text-2xl font-bold flex items-center gap-2 mb-1">
-          <Gavel className="h-6 w-6" /> Dispute Management
-        </h1>
-        <p className="text-sm text-muted-foreground">
-          Review disputes and trigger on-chain resolution. All actions are logged to the audit trail.
-        </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Gavel className="h-5 w-5" />
+            Dispute Management
+          </CardTitle>
+          <CardDescription>
+            Review disputes and trigger on-chain resolution. All actions are logged to the audit trail.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      <DisputeFilters
+        current={statusFilter}
+        onChange={(s) => { setStatusFilter(s); setPage(1); setSelectedId(null); }}
+        total={total}
+      />
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <DisputeList
+          disputes={disputes}
+          loading={loading}
+          selectedId={selectedId}
+          onSelect={(id) => { setSelectedId(id); setNote(''); }}
+          totalPages={totalPages}
+          currentPage={page}
+          onPageChange={setPage}
+        />
+
+        <DisputeDetail
+          dispute={selected}
+          note={note}
+          onNoteChange={setNote}
+          onResolve={resolve}
+          resolving={resolving}
+        />
       </div>
 
-      {/* Filters */}
-      <div className="flex items-center gap-2 flex-wrap">
-        {(['open', 'resolved', 'all'] as const).map((s) => (
-          <Button
-            key={s}
-            size="sm"
-            variant={statusFilter === s ? 'default' : 'outline'}
-            onClick={() => { setStatusFilter(s); setPage(1); setSelectedId(null); }}
-          >
-            {s.charAt(0).toUpperCase() + s.slice(1)}
-          </Button>
-        ))}
-        <span className="ml-auto text-sm text-muted-foreground">{total} dispute{total !== 1 ? 's' : ''}</span>
-        <Button variant="ghost" size="icon" onClick={load} aria-label="Refresh">
-          <RefreshCw className="h-4 w-4" />
+      <div className="flex justify-end">
+        <Button variant="outline" size="sm" onClick={load} disabled={loading}>
+          <RefreshCw className="mr-1 h-4 w-4" />
+          Refresh
         </Button>
       </div>
 
@@ -181,12 +184,7 @@ export default function AdminDisputesPage() {
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <Badge
-                      variant="outline"
-                      className={`text-[10px] ${STATUS_COLORS[d.status] ?? ''}`}
-                    >
-                      {d.status}
-                    </Badge>
+                    <StatusBadge status={d.status} className="text-[10px]" />
                     <span className="text-xs text-muted-foreground">{ageLabel(d.createdAt)}</span>
                   </div>
                   <div className="font-mono text-xs text-muted-foreground truncate">{d.id}</div>
@@ -196,27 +194,14 @@ export default function AdminDisputesPage() {
             )}
           </CardContent>
           {totalPages > 1 && (
-            <div className="flex justify-center gap-2 px-4 pb-4">
-              <Button
-                size="sm"
-                variant="outline"
-                disabled={page <= 1}
-                onClick={() => setPage((p) => p - 1)}
-              >
-                Previous
-              </Button>
-              <span className="self-center text-sm text-muted-foreground">
-                {page} / {totalPages}
-              </span>
-              <Button
-                size="sm"
-                variant="outline"
-                disabled={page >= totalPages}
-                onClick={() => setPage((p) => p + 1)}
-              >
-                Next
-              </Button>
-            </div>
+            <PaginationControls
+              page={page}
+              totalPages={totalPages}
+              onPageChange={setPage}
+              label={`${page} / ${totalPages}`}
+              align="center"
+              className="px-4 pb-4"
+            />
           )}
         </Card>
 
@@ -238,12 +223,7 @@ export default function AdminDisputesPage() {
                   <div>
                     <dt className="text-xs text-muted-foreground mb-0.5">Status</dt>
                     <dd>
-                      <Badge
-                        variant="outline"
-                        className={STATUS_COLORS[selected.status] ?? ''}
-                      >
-                        {selected.status}
-                      </Badge>
+                      <StatusBadge status={selected.status} />
                     </dd>
                   </div>
                   <div>
