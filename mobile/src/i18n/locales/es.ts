@@ -208,6 +208,81 @@ const es = {
     version: 'Versión {{version}}',
     languageChanged: 'Idioma actualizado a {{language}}',
     rtlNote: 'Diseño de derecha a izquierda activado',
+    
+    // Preferences
+    preferencesTitle: 'Preferencias',
+    preferencesSubtitle: 'Personaliza tu experiencia',
+    
+    // Appearance
+    appearanceSection: 'Apariencia',
+    darkMode: 'Modo Oscuro',
+    darkModeDescription: 'Usar siempre tema oscuro',
+    systemTheme: 'Tema del Sistema',
+    systemThemeDescription: 'Coincidir con los ajustes del dispositivo',
+    largerText: 'Texto Más Grande',
+    largerTextDescription: 'Aumentar el tamaño de fuente para mejor legibilidad',
+    highContrast: 'Alto Contraste',
+    highContrastDescription: 'Mejorar el contraste de colores para visibilidad',
+    
+    // Notifications
+    notificationsSection: 'Notificaciones',
+    pushNotifications: 'Notificaciones Push',
+    pushNotificationsDescription: 'Recibir alertas push para mensajes y actualizaciones',
+    notificationLevel: 'Nivel de Notificación',
+    notificationLevelDescription: 'Controlar qué notificaciones recibes',
+    vibration: 'Vibración',
+    vibrationDescription: 'Activar retroalimentación háptica para notificaciones',
+    sound: 'Sonido',
+    soundDescription: 'Reproducir sonidos para notificaciones entrantes',
+    
+    // Privacy
+    privacySection: 'Privacidad',
+    profileVisibility: 'Visibilidad del Perfil',
+    profileVisibilityDescription: 'Mostrar tu perfil a no contactos',
+    lastSeen: 'Última Vez visto',
+    lastSeenDescription: 'Mostrar cuándo estuviste activo por última vez',
+    screenRecording: 'Protección de Grabación de Pantalla',
+    screenRecordingDescription: 'Bloquear capturas de pantalla y grabación de pantalla',
+    
+    // Data & Storage
+    dataSection: 'Datos y Almacenamiento',
+    dataUsage: 'Modo de Uso de Datos',
+    dataUsageDescription: 'Controlar el consumo de datos',
+    autoDownload: 'Descarga Automática de Media',
+    autoDownloadDescription: 'Descargar automáticamente imágenes y videos',
+    clearCache: 'Borrar Caché al Salir',
+    clearCacheDescription: 'Eliminar datos en caché al cerrar la aplicación',
+    
+    // Features
+    featuresSection: 'Características',
+    biometricAuth: 'Autenticación Biométrica',
+    biometricAuthDescription: 'Usar Face ID o Touch ID para acceso seguro',
+    autoDarkSwitch: 'Modo Oscuro Automático',
+    autoDarkSwitchDescription: 'Cambiar automáticamente según la hora del día',
+    
+    // Data usage options
+    dataStandard: 'Estándar',
+    dataStandardDescription: 'Uso normal de datos (predeterminado)',
+    dataLow: 'Bajo',
+    dataLowDescription: 'Reducir consumo de datos',
+    dataEconomy: 'Economía',
+    dataEconomyDescription: 'Uso mínimo de datos',
+    
+    // Notification levels
+    levelNone: 'Ninguno',
+    levelNoneDescription: 'Desactivar todas las notificaciones',
+    levelCritical: 'Solo Crítico',
+    levelCriticalDescription: 'Solo alertas críticas',
+    levelImportant: 'Importante',
+    levelImportantDescription: 'Alertas importantes y críticas',
+    levelAll: 'Todo',
+    levelAllDescription: 'Todas las notificaciones',
+    
+    // Buttons
+    resetPreferences: 'Restablecer Preferencias',
+    resetPreferencesConfirm: '¿Restablecer todas las preferencias a los valores predeterminados?',
+    resetComplete: 'Preferencias restablecidas con éxito',
+    resetError: 'Error al restablecer preferencias',
   },
   home: {
     greeting: 'Hola, creador de Tamgora',

@@ -208,6 +208,81 @@ const de = {
     version: 'Version {{version}}',
     languageChanged: 'Sprache aktualisiert: {{language}}',
     rtlNote: 'Rechts-nach-links-Layout aktiviert',
+    
+    // Preferences
+    preferencesTitle: 'Einstellungen',
+    preferencesSubtitle: 'Passen Sie Ihre Erfahrung an',
+    
+    // Appearance
+    appearanceSection: 'Erscheinungsbild',
+    darkMode: 'Dunkler Modus',
+    darkModeDescription: 'Immer dunkles Design verwenden',
+    systemTheme: 'System-Design',
+    systemThemeDescription: 'An Geräteeinstellungen anpassen',
+    largerText: 'Größerer Text',
+    largerTextDescription: 'Schriftgröße für bessere Lesbarkeit erhöhen',
+    highContrast: 'Hoher Kontrast',
+    highContrastDescription: 'Farbkontrast für bessere Sichtbarkeit verbessern',
+    
+    // Notifications
+    notificationsSection: 'Benachrichtigungen',
+    pushNotifications: 'Push-Benachrichtigungen',
+    pushNotificationsDescription: 'Push-Benachrichtigungen für Nachrichten und Updates empfangen',
+    notificationLevel: 'Benachrichtigungsstufe',
+    notificationLevelDescription: 'Steuerung, welche Benachrichtigungen Sie erhalten',
+    vibration: 'Vibration',
+    vibrationDescription: 'Haptisches Feedback für Benachrichtigungen aktivieren',
+    sound: 'Ton',
+    soundDescription: 'Töne für eingehende Benachrichtigungen abspielen',
+    
+    // Privacy
+    privacySection: 'Datenschutz',
+    profileVisibility: 'Profil-Sichtbarkeit',
+    profileVisibilityDescription: 'Ihr Profil Nicht-Kontakten anzeigen',
+    lastSeen: 'Zuletzt aktiv',
+    lastSeenDescription: 'Anzeigen, wann Sie zuletzt aktiv waren',
+    screenRecording: 'Bildschirmaufnahme-Schutz',
+    screenRecordingDescription: 'Screenshots und Bildschirmaufnahme blockieren',
+    
+    // Data & Storage
+    dataSection: 'Daten und Speicher',
+    dataUsage: 'Datenverbrauchsmodus',
+    dataUsageDescription: 'Datenverbrauch steuern',
+    autoDownload: 'Medien automatisch herunterladen',
+    autoDownloadDescription: 'Bilder und Videos automatisch herunterladen',
+    clearCache: 'Cache beim Beenden löschen',
+    clearCacheDescription: 'Gecachte Daten beim Schließen der App entfernen',
+    
+    // Features
+    featuresSection: 'Funktionen',
+    biometricAuth: 'Biometrische Authentifizierung',
+    biometricAuthDescription: 'Face ID oder Touch ID für sicheren Zugriff verwenden',
+    autoDarkSwitch: 'Auto Dunkler Modus',
+    autoDarkSwitchDescription: 'Automatisch basierend auf Tageszeit wechseln',
+    
+    // Data usage options
+    dataStandard: 'Standard',
+    dataStandardDescription: 'Normaler Datenverbrauch (Standard)',
+    dataLow: 'Niedrig',
+    dataLowDescription: 'Datenverbrauch reduzieren',
+    dataEconomy: 'Wirtschaft',
+    dataEconomyDescription: 'Minimale Datenverwendung',
+    
+    // Notification levels
+    levelNone: 'Keine',
+    levelNoneDescription: 'Alle Benachrichtigungen deaktivieren',
+    levelCritical: 'Nur Kritisch',
+    levelCriticalDescription: 'Nur kritische Alerts',
+    levelImportant: 'Wichtig',
+    levelImportantDescription: 'Wichtige und kritische Alerts',
+    levelAll: 'Alle',
+    levelAllDescription: 'Alle Benachrichtigungen',
+    
+    // Buttons
+    resetPreferences: 'Einstellungen zurücksetzen',
+    resetPreferencesConfirm: 'Alle Einstellungen auf Standard zurücksetzen?',
+    resetComplete: 'Einstellungen erfolgreich zurückgesetzt',
+    resetError: 'Fehler beim Zurücksetzen der Einstellungen',
   },
   home: {
     greeting: 'Hallo, Tamgora-Creator',

@@ -209,6 +209,81 @@ const fr = {
     version: 'Version {{version}}',
     languageChanged: 'Langue mise à jour : {{language}}',
     rtlNote: 'Mise en page droite-à-gauche activée',
+    
+    // Preferences
+    preferencesTitle: 'Préférences',
+    preferencesSubtitle: 'Personnalisez votre expérience',
+    
+    // Appearance
+    appearanceSection: 'Apparence',
+    darkMode: 'Mode Sombre',
+    darkModeDescription: 'Toujours utiliser le thème sombre',
+    systemTheme: 'Thème Système',
+    systemThemeDescription: 'S\'adapter aux paramètres de l\'appareil',
+    largerText: 'Texte Plus Grand',
+    largerTextDescription: 'Augmenter la taille de la police pour une meilleure lisibilité',
+    highContrast: 'Haut Contraste',
+    highContrastDescription: 'Améliorer le contraste des couleurs pour la visibilité',
+    
+    // Notifications
+    notificationsSection: 'Notifications',
+    pushNotifications: 'Notifications Push',
+    pushNotificationsDescription: 'Recevoir des alertes push pour les messages et mises à jour',
+    notificationLevel: 'Niveau de Notification',
+    notificationLevelDescription: 'Contrôler quelles notifications vous recevez',
+    vibration: 'Vibration',
+    vibrationDescription: 'Activer le retour haptique pour les notifications',
+    sound: 'Son',
+    soundDescription: 'Jouer des sons pour les notifications entrantes',
+    
+    // Privacy
+    privacySection: 'Confidentialité',
+    profileVisibility: 'Visibilité du Profil',
+    profileVisibilityDescription: 'Afficher votre profil aux non-contact',
+    lastSeen: 'Vu Pour la Dernière Fois',
+    lastSeenDescription: 'Afficher quand vous avez été actif pour la dernière fois',
+    screenRecording: 'Protection de Enregistrement d\'Écran',
+    screenRecordingDescription: 'Bloquer les captures d\'écran et l\'enregistrement d\'écran',
+    
+    // Data & Storage
+    dataSection: 'Données et Stockage',
+    dataUsage: 'Mode d\'Utilisation des Données',
+    dataUsageDescription: 'Contrôler la consommation de données',
+    autoDownload: 'Téléchargement Automatique des Médias',
+    autoDownloadDescription: 'Télécharger automatiquement les images et vidéos',
+    clearCache: 'Effacer le Cache à la Sortie',
+    clearCacheDescription: 'Supprimer les données mises en cache à la fermeture de l\'application',
+    
+    // Features
+    featuresSection: 'Fonctionnalités',
+    biometricAuth: 'Authentification Biométrique',
+    biometricAuthDescription: 'Utiliser Face ID ou Touch ID pour un accès sécurisé',
+    autoDarkSwitch: 'Mode Sombre Automatique',
+    autoDarkSwitchDescription: 'Changer automatiquement selon l\'heure de la journée',
+    
+    // Data usage options
+    dataStandard: 'Standard',
+    dataStandardDescription: 'Utilisation normale des données (par défaut)',
+    dataLow: 'Faible',
+    dataLowDescription: 'Réduire la consommation de données',
+    dataEconomy: 'Économie',
+    dataEconomyDescription: 'Utilisation minimale des données',
+    
+    // Notification levels
+    levelNone: 'Aucun',
+    levelNoneDescription: 'Désactiver toutes les notifications',
+    levelCritical: 'Seulement Critique',
+    levelCriticalDescription: 'Seulement les alertes critiques',
+    levelImportant: 'Important',
+    levelImportantDescription: 'Alertes importantes et critiques',
+    levelAll: 'Tout',
+    levelAllDescription: 'Toutes les notifications',
+    
+    // Buttons
+    resetPreferences: 'Réinitialiser les Préférences',
+    resetPreferencesConfirm: 'Réinitialiser toutes les préférences par défaut ?',
+    resetComplete: 'Préférences réinitialisées avec succès',
+    resetError: 'Échec de la réinitialisation des préférences',
   },
   home: {
     greeting: 'Bonjour, créateur Tamgora',

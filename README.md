@@ -297,5 +297,5 @@ MIT
 
 ## Handsoff notes
 
-<!-- handsoff-issue-1369 -->
-- #1369: [Mobile] Establish the specific standard Freelancer directory browsing experience
+<!-- handsoff-issue-1364 -->
+- #1364: [Mobile] Implement specialized Infinite Scrolling structures preserving memory gracefully

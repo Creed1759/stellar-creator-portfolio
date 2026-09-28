@@ -57,7 +57,9 @@
         "READ_MEDIA_VIDEO",
         "RECORD_AUDIO",
         "INTERNET",
-        "ACCESS_NETWORK_STATE"
+        "ACCESS_NETWORK_STATE",
+        "USE_BIOMETRIC",
+        "USE_FINGERPRINT"
       ],
       "intentFilters": [
         {
@@ -127,9 +129,9 @@
         }
       ],
       [
-        "expo-file-system",
+        "expo-local-authentication",
         {
-          "isIosDeploymentTargetEnabled": true
+          "faceIDPermission": "Tamgora uses Face ID or Touch ID to securely authenticate portfolio access."
         }
       ],
       [
@@ -138,22 +140,49 @@
           "ios": { "newArchEnabled": true },
           "android": { "newArchEnabled": true }
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#6366f1",
+          "sounds": ["./assets/notification-sounds/default.mp3"],
+          "android": {
+            "useNextNotificationsApi": true
+          }
+        }
       ]
     ],
     "extra": {
       "eas": { "projectId": "tamgora" },
-      "fileUpload": {
-        "maxFileSizeBytes": 26214400,
-        "allowedMimeTypes": [
-          "image/jpeg",
-          "image/png",
-          "image/webp",
-          "image/gif",
-          "video/mp4",
-          "video/quicktime",
-          "application/pdf"
-        ],
-        "directBucketUpload": true
+      "router": {
+        "origin": false,
+        "screens": {
+          "details": {
+            "title": "Details",
+            "presentation": "card",
+            "animation": "slide_from_right",
+            "gestureEnabled": true
+          },
+          "proposal": {
+            "title": "Proposal",
+            "presentation": "modal",
+            "animation": "slide_from_bottom",
+            "gestureEnabled": true
+          },
+          "application": {
+            "title": "Application",
+            "presentation": "modal",
+            "animation": "slide_from_bottom",
+            "gestureEnabled": true
+          },
+          "creator": {
+            "title": "Creator",
+            "presentation": "card",
+            "animation": "slide_from_right",
+            "gestureEnabled": true
+          }
+        }
       }
     }
   }
