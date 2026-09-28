@@ -23,6 +23,7 @@
         "NSPhotoLibraryUsageDescription": "Tamgora needs access to your photo library to upload portfolio images.",
         "NSCameraUsageDescription": "Tamgora needs camera access to capture portfolio photos.",
         "NSPhotoLibraryAddUsageDescription": "Tamgora needs permission to save photos to your library.",
+        "NSMicrophoneUsageDescription": "Tamgora needs microphone access to record portfolio videos.",
         "NSFaceIDUsageDescription": "Tamgora uses Face ID or Touch ID to securely authenticate portfolio access.",
         "NSUserTrackingUsageDescription": "Tamgora uses tracking to provide personalized content and share experiences.",
         "LSApplicationQueriesSchemes": [
@@ -53,6 +54,8 @@
         "WRITE_EXTERNAL_STORAGE",
         "CAMERA",
         "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO",
+        "RECORD_AUDIO",
         "INTERNET",
         "ACCESS_NETWORK_STATE"
       ],
