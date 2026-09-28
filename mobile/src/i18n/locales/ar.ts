@@ -208,6 +208,81 @@ const ar = {
     version: 'الإصدار {{version}}',
     languageChanged: 'تم تحديث اللغة إلى {{language}}',
     rtlNote: 'تم تفعيل تخطيط اليمين إلى اليسار',
+    
+    // Preferences
+    preferencesTitle: 'التفضيلات',
+    preferencesSubtitle: 'خصص تجربتك',
+    
+    // Appearance
+    appearanceSection: 'المظهر',
+    darkMode: 'الوضع الداكن',
+    darkModeDescription: 'استخدم دائمًا التصميم الداكن',
+    systemTheme: 'تصميم النظام',
+    systemThemeDescription: 'المطابقة لإعدادات الجهاز',
+    largerText: 'نص أكبر',
+    largerTextDescription: 'زيادة حجم الخط لتحسين القراءة',
+    highContrast: 'تباين عالي',
+    highContrastDescription: 'تحسين تباين الألوان للرؤية',
+    
+    // Notifications
+    notificationsSection: 'الإشعارات',
+    pushNotifications: 'إشعارات الدفع',
+    pushNotificationsDescription: 'تلقي تنبيهات دفع للرسائل والتحديثات',
+    notificationLevel: 'مستوى الإشعار',
+    notificationLevelDescription: 'التحكم في الإشعارات التي تستقبلها',
+    vibration: 'الاهتزاز',
+    vibrationDescription: 'تمكين ردود الفعل اللمسية للإشعارات',
+    sound: 'الصوت',
+    soundDescription: 'تشغيل أصوات للإشعارات الواردة',
+    
+    // Privacy
+    privacySection: 'الخصوصية',
+    profileVisibility: 'رؤية الملف الشخصي',
+    profileVisibilityDescription: 'إظهار ملفك الشخصي للغير',
+    lastSeen: 'اخر ظهور',
+    lastSeenDescription: 'إظهار متى كنت نشطًا آخر مرة',
+    screenRecording: 'حماية تسجيل الشاشة',
+    screenRecordingDescription: 'منع لقطات الشاشة وتسجيل الشاشة',
+    
+    // Data & Storage
+    dataSection: 'البيانات والتخزين',
+    dataUsage: 'وضع استخدام البيانات',
+    dataUsageDescription: 'التحكم في استهلاك البيانات',
+    autoDownload: 'تنزيل الوسائط تلقائيًا',
+    autoDownloadDescription: 'تنزيل الصور والفيديوهات تلقائيًا',
+    clearCache: 'مسح الذاكرة المؤقتة عند الخروج',
+    clearCacheDescription: 'إزالة البيانات المخزنة مؤقتًا عند إغلاق التطبيق',
+    
+    // Features
+    featuresSection: 'الميزات',
+    biometricAuth: 'المصادقة البيومترية',
+    biometricAuthDescription: 'استخدام Face ID أو Touch ID للوصول الآمن',
+    autoDarkSwitch: 'الوضع الداكن التلقائي',
+    autoDarkSwitchDescription: 'التبديل التلقائي بناءً على وقت اليوم',
+    
+    // Data usage options
+    dataStandard: 'قياسي',
+    dataStandardDescription: 'استخدام بيانات عادي (افتراضي)',
+    dataLow: 'منخفض',
+    dataLowDescription: 'تقليل استهلاك البيانات',
+    dataEconomy: 'اقتصادي',
+    dataEconomyDescription: 'استخدام أقل للبيانات',
+    
+    // Notification levels
+    levelNone: 'بدون',
+    levelNoneDescription: 'تعطيل جميع الإشعارات',
+    levelCritical: 'حرج فقط',
+    levelCriticalDescription: 'تنبيهات حرجة فقط',
+    levelImportant: ' مهم',
+    levelImportantDescription: 'تنبيهات مهمة وحرجة',
+    levelAll: 'الكل',
+    levelAllDescription: 'جميع الإشعارات',
+    
+    // Buttons
+    resetPreferences: 'إعادة تعيين التفضيلات',
+    resetPreferencesConfirm: 'إعادة تعيين جميع التفضيلات إلى الافتراضية؟',
+    resetComplete: 'تمت إعادة تعيين التفضيلات بنجاح',
+    resetError: 'فشل في إعادة تعيين التفضيلات',
   },
   home: {
     greeting: 'مرحبًا، صانع Tamgora',
